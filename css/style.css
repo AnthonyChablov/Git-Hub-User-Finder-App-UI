@@ -14,36 +14,71 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
 }
 
+img {
+  width: 100%;
+}
+
 .container {
-  width: 74%;
+  width: 70%;
   max-width: 900px;
   margin: 0 auto;
 }
 
+.row {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+}
+
 .hero {
   background-color: #f5f5f5;
-  color: #2B394A;
+  color: #0d2636;
   padding: 70px 0;
 }
 
+.hero__contents {
+  width: 50%;
+  /* .hero__contents--p:hover{
+      transform: translateY(-10px);
+      cursor: pointer;
+  } */
+}
 .hero__contents .hero__contents--header {
   font-size: 65px;
   font-weight: 700;
-  width: 83%;
+  width: 86%;
   padding-bottom: 5px;
   transition: transform 250ms;
+  margin-top: 0px;
 }
 .hero__contents .hero__contents--header:hover {
   cursor: pointer;
   transform: translateY(-10px);
 }
-.hero__contents .underline {
-  text-shadow: 2px 8px 0.1px #f5f5f5;
-}
 .hero__contents .hero__contents--p {
+  color: #0d2636;
   line-height: 38px;
-  padding-bottom: 30px;
-  width: 65%;
+  padding-bottom: 35px;
+  width: 100%;
+  /* transition: transform 250ms; */
+}
+.hero__contents .hero__contents--p:hover {
+  cursor: default;
+}
+.hero__contents .hero__contents--form {
+  display: inline-flex;
+}
+.hero__contents .hero__contents--form .form__field {
+  padding: 5.8px 10px 9px 10px;
+  line-height: 26px;
+  font-size: large;
+  border-radius: 4px;
+  border: 1px solid #0d2636;
+  background-color: #f5f5f5;
+  vertical-align: middle;
+}
+.hero__contents .hero__contents--form .form__field:focus {
+  outline: 0;
 }
 .hero__contents .btn {
   color: #f5f5f5;
@@ -57,22 +92,37 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: 7px;
   transition: all 0.5s ease;
   color: #fff;
-  border: 3px solid white;
+  border: 3px solid #FDA5A4;
   font-family: "Montserrat", sans-serif;
   text-transform: uppercase;
   text-align: center;
   background-color: #FDA5A4;
   padding: 13px 28px;
   outline: none;
-  border-radius: 4px;
+  border-radius: 7px;
+  margin-left: 6px;
 }
 .hero__contents .btn:hover {
   cursor: pointer;
   filter: brightness(83%);
-  color: #001F3F;
-  background-color: #fff;
+  border: 3px solid #0d2636;
+  color: #fff;
+  background-color: #0d2636;
+}
+
+.hero__image {
+  width: 50%;
+}
+.hero__image .hero__image--img {
+  transition: transform 250ms;
+}
+.hero__image .hero__image--img:hover {
+  transform: translateY(-10px);
+  cursor: pointer;
 }
 
 .main {
-  padding-top: 200px;
+  background-color: #0d2636;
+  padding: 400px;
+  color: #f5f5f5;
 }/*# sourceMappingURL=style.css.map */
