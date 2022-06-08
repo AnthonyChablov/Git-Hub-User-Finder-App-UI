@@ -17,11 +17,7 @@ formTextUI.addEventListener('submit',(e)=>{
 
 // practice making get request to chuck norris api
 formTextUI.addEventListener('click',(e)=>{
-    fetch('https://api.chucknorris.io/jokes/random')
-        .then((res)=> (res.json()))
-        .then((data)=>{
-            console.log(data.value);
-        })
+    
 })
 
 
