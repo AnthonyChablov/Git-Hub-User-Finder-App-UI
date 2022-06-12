@@ -3,6 +3,8 @@ class Github{
     constructor(){
         this.client_id = 'd49d03709c8cc65a9ddf';
         this.client_secret = '948f6e29f1d403e8b08d0fbe4d269412831d37c3';
+        this.repo_count=5;
+        this.repos_sort = 'created: asc';
     }
 }
 const github = new Github;
@@ -10,77 +12,117 @@ const github = new Github;
 // selecting variables
 let searchBtnUI = document.querySelector('.hero__contents--btn');
 let formFieldUI = document.querySelector('#form-submit');
-let insertElemUI = document.querySelector('.insert-content');
+let heroHeader = document.querySelector('.hero__contents--header');
+let mainHeader = document.querySelector('.main__header');
+let mainContents = document.querySelector('.main__contents');
+
+// selecting elements to input data into
+let inputImage = document.querySelector('.input-image');
+let viewProfile = document.querySelector('.view-profile');
+let info1 = document.querySelector('.info-1');
+let info2 = document.querySelector('.info-2');
+let info3 = document.querySelector('.info-3');
+let info4 = document.querySelector('.info-4');
+
+let company = document.querySelector('.company');
+let websiteBlog = document.querySelector('.website-blog');
+let locationUser = document.querySelector('.location');
+let memberSince = document.querySelector('.member-since');
+
+let startYourSearchUI = document.querySelector
+('#start-your-search');
+
+let repos = document.querySelector('.insert-repos');
 
 let user = '';
 let result;
 
-
 // event listeners
+heroHeader.addEventListener('click', (e)=>{
+    startYourSearchUI.scrollIntoView(true);
+    e.preventDefault();
+});
+
 searchBtnUI.addEventListener('click',(e)=>{
-    insertElemUI.innerHTML = `
-                <div class="container" id="start-your-search">
-                    <div class="main__header">
-                        <h2>Search Github Users</h2>
-                        <p>Enter a username to fetch a user profile and repos</p>
-                        <div class="header__contents--form">
-                            <form class="form" action="app.js" autocomplete="off">
-                                <input type="text" class="form__field" placeholder="Username" name="name" id='form-submit' height="50"/>
-                                <!-- 
-                                    <a href="#!" class="hero__contents--btn btn">Search<a> 
-                                --> 
-                            </form>
-                        </div>
-                    </div>
-        
-                    <div class="main__contents row-2">
-                        <div class="info-one">
-                            <div class="main__contents--images">
-                                <img src="images/2048px-Octicons-mark-github.svg.png" alt="">
-                            </div>
-                            <a href="#" class="btn-2">View Profile</a>
-                        </div>
-                        
-                        <div class="info-two">
-                            <div class="information-1 row">
-                                <p class="info-1 first-category">Public Repos: </p>
-                                <p class="info-2 first-category">Public Gists: </p>
-                                <p class="info-3 first-category">Followers: </p>
-                                <p class="info-4 first-category">Following: </p>
-                            </div>
-                            <div class="information-2 ">
-                                <p class="company second-category">Public Repos: </p>
-                                <p class="website-blog second-category">Public Gists: </p>
-                                <p class="location second-category">Followers: </p>
-                                <p class="info-4 second-category">Following: </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>`;
-        insertElemUI.scrollIntoView(true);
+    mainHeader.classList.remove('hidden')
+    startYourSearchUI.scrollIntoView(true);
+    e.preventDefault();
+});
+
+mainHeader.addEventListener('submit',(e)=>{
+    user = formFieldUI.value;
+    // upon error
+    if (user.trim() === ''){
+        console.log('Please enter a username');
+        document.querySelector('.header__contents--form').classList.add('error');
+        document.querySelector('.header--error').classList.remove('hidden');
+        document.querySelector('.header__contents--form').classList.remove('error');
+    //upon success
+    } else {
+        mainContents.classList.add('hidden');
+        // making requests
+        // fetch user info
+        fetch(`https://api.github.com/users/${user.trim()}?client_id=${github.client_id}&client_secret${github.client_secret}`,
+            {method: 'GET'})
+            .then(elem => elem.json())
+            .then(res => {
+                console.log(res);
+
+                if (res.message === "Not Found"){
+                    console.log(`not found`);
+                    /* document.querySelector('.header__contents--form').classList.add('error'); */
+                    document.querySelector('.header--error').classList.remove('hidden');
+                    
+                }else{ // error state of not found
+                    mainContents.classList.remove('hidden');
+                    mainContents.scrollIntoView(true);
+                    document.querySelector('.header--error').classList.add('hidden');
+                    // inputting data into DOM from request
+                    inputImage.src=res.avatar_url;
+                    viewProfile.href=res.html_url;
+                    info1.textContent=`Public Repos: ${res.public_repos}`;
+                    info2.textContent = `Public Gists: ${res.public_gists}`;
+                    info3.textContent = `Followers: ${res.followers}`;
+                    info4.textContent = `Following: ${res.following}`;
+
+                    company.textContent = `Company: ${res.company || 'N/A'}`;
+                    websiteBlog.innerHTML = `Website: ${res.blog || 'N/A'}`;
+                    locationUser.textContent = `Location: ${res.location||'N/A'}`;
+                    memberSince.textContent = `Member Since: ${res.created_at.slice(0,4)}`;
+                }
+            })
+            .catch(err => console.error('An error has occured with user request : ', err));  
+
+        // fetch repos
+        fetch(`https://api.github.com/users/${user.trim()}/repos?per_page=${github.repo_count}&sort=${github.repos_sort}&client_id=${github.client_id}&client_secret${github.client_secret}`,
+        {method:'GET'})
+            .then(elem=> elem.json())
+            .then(res => {
+                repos.innerHTML='';
+                res.forEach(elem1=> {
+                    console.log(elem1)
+                    let insertRepos =document.createElement('div')
+                    insertRepos.innerHTML=`
+                    <div class="insert-repo__1 row3">
+                        <p class="repo__1--p">Name:  ${elem1.name}
+                        <p class="repo__1--stars">Stars: ${elem1.stargazers_count}</p>
+                        <p class="repo__1--watchers">${elem1.watchers}</p>
+                        <p class="repo__1--Forks">${elem1.forks}</p>
+                    </div>`;
+                    repos.appendChild(insertRepos);
+                });
+            })
+            .catch(err => console.error('An error has occured with repo request : ', err))
+    }
     e.preventDefault();
 });
 
 
 
-/* 
-user = formFieldUI.value;
-
-    if (user === ''){
-        console.log('Please enter a username');
-    }else{
-        fetch(`https://api.github.com/users/${user.trim()}?client_id=${github.client_id}&client_secret${github.client_secret}`,
-            {method: 'GET'})
-            .then(elem => elem.json())
-            .then(res => {
-                
-                console.log(res);
-                
-            })
-            .catch(err => console.error('An error has occured with request : ', err));  
-    }
-
- */
 
 
 
+/* document.querySelector('.repo__1--p').textContent=`Name:  ${elem1.name}`;
+                    document.querySelector('.repo__1--stars').textContent=`Stars: ${elem1.stargazers_count}`;
+                    document.querySelector('.repo__1--watchers').textContent=`Watchers: ${elem1.watchers}`;
+                    document.querySelector('.repo__1--Forks').textContent=`Forks: ${elem1.forks}`;*/

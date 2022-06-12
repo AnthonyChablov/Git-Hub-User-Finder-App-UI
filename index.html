@@ -16,8 +16,7 @@
                 <h1 class="hero__contents--header">Find Users on Github <span class="underline">today!</span></h1>
                 <p class="hero__contents--p">Search all of Github's users. Enter a username to fetch a user's profile information and public repositories. </p>
 
-                <a href="#start-your-search" class="hero__contents--btn btn">Start Your Search</a>
-                
+                <a href="#start-your-search" class="hero__contents--btn btn">Start Searching</a>
             </div>
             <div class="hero__image">
                 <a href="https://github.com/"><img class="hero__image--img" src="images/pngaaa.com-1100822.png" alt="git-hub image"></a>
@@ -26,15 +25,86 @@
         </div>
     </div>
     <main class="main insert-content" >
-        
+        <div class="container">
+            <div class="main__header hidden" id="start-your-search">
+                <h2 class="header--title">Search Github Users</h2>
+                <p class="header--p">Enter a username to fetch a user profile and repos</p>
+                <p class="header--error hidden">Please enter a valid username</p>
 
-            <!-- 
-            <div class="main__repos">
+                <div class="header__contents--form">
+                    <form class="form" action="app.js" autocomplete="off">
+                        <input type="text" class="form__field" placeholder="Username" name="name" id='form-submit' height="50"/>
+                        <!-- 
+                            <a href="#!" class="hero__contents--btn btn">Search<a> 
+                        --> 
+                    </form>
+                </div>
+            </div>
+
+            <div class="main__contents row-2 hidden">
+                <div class="info-one">
+                    <div class="main__contents--images">
+                        <img class="input-image" src="images/2048px-Octicons-mark-github.svg.png" alt="">
+                    </div>
+                    <a href="#" class="btn-2 view-profile">View Profile</a>
+                </div>
+                
+                <div class="info-two">
+                    
+                    <div class="information-1 row">
+                        <p class="info-1 first-category">Public Repos: </p>
+                        <p class="info-2 first-category">Public Gists: </p>
+                        <p class="info-3 first-category">Followers: </p>
+                        <p class="info-4 first-category">Following: </p>
+                    </div>
+                    <div class="information-2 ">
+                        <p class="company second-category">Company: </p>
+                        <p class="website-blog second-category">Website Blog: </p>
+                        <p class="location second-category">Location: </p>
+                        <p class="member-since  second-category">Member Since: </p>
+                    </div>
+                </div>
+            </div> <!-- main contents -->
+        
+            <div class="main__contents--repos hidden">
                 <h3>Latest Repos</h3>
-            </div> 
-            -->
-            
-        <p id="start-your-search"></p>
+                <div class="insert-repos">
+                    <div class="insert-repo__1 row3">
+                        <p class="repo__1--p"></p>
+                        <p class="repo__1--stars"></p>
+                        <p class="repo__1--watchers"></p>
+                        <p class="repo__1--Forks"></p>
+                    </div>
+                    <div class="insert-repo__2 row3">
+                        <p class="repo__2--p"></p>
+                        <p class="repo__2--stars"></p>
+                        <p class="repo__2--watchers"></p>
+                        <p class="repo__2--Forks"></p>
+                    </div>
+                    <div class="insert-repo__3 row3">
+                        <p class="repo__3--p"></p>
+                        <p class="repo__3--stars"></p>
+                        <p class="repo__3--watchers"></p>
+                        <p class="repo__3--Forks"></p>
+                    </div>
+                    <div class="insert-repo__4 row3">
+                        <p class="repo__4--p"></p>
+                        <p class="repo__4--stars"></p>
+                        <p class="repo__4--watchers"></p>
+                        <p class="repo__4--Forks"></p>
+                    </div>
+                    <div class="insert-repo__5 row3">
+                        <p class="repo__5--p"></p>
+                        <p class="repo__5--stars"></p>
+                        <p class="repo__5--watchers"></p>
+                        <p class="repo__5--Forks"></p>
+                    </div>
+                </div>
+                
+
+            </div>
+        
+        </div>
     </main>
     
     <script src="js/app.js"></script>    

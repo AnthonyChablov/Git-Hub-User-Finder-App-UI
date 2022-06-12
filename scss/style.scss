@@ -33,11 +33,14 @@ img{
     align-items: flex-start;
     
 }
+
+
 .hero{
     background-color: $background;
     color: $navy-blue;
     padding: 70px 0;
     padding-bottom: 80px;
+
 }
 .hero__contents{
     width: 50%;
@@ -49,18 +52,19 @@ img{
         padding-bottom: 5px;
         transition: transform 250ms;
         margin-top: 0px;
+        text-shadow: 0px 0px 0.5px $navy-blue;
     }
     .hero__contents--header:hover{
-        cursor: pointer;
+        cursor: default;
         transform: translateY(-10px);
     }
-    
-    
+
     .hero__contents--p{
         color: $navy-blue;
         line-height: 38px;
         padding-bottom: 35px;
         width: 100%;
+        text-shadow: 0px 0px 1px $light-orange;
         
         /* transition: transform 250ms; */
     }
@@ -76,7 +80,7 @@ img{
 
 .header__contents--form{
     display: inline-flex;
-   
+    
     .form__field{    
         padding: 5.8px 10px 9px 10px; 
         line-height: 26px; 
@@ -85,11 +89,15 @@ img{
         border:1px solid #0d2636;
         background-color: $background;
         vertical-align: middle;
-        width: 390%;
+        box-shadow: 0.5px 0.5px 3px $navy-blue;
     }
+   
     .form__field:focus {
         outline: 0;
     }   
+    .form__field:hover{
+        box-shadow: 2px 2px 4px $navy-blue;
+    }
 }
 .btn{
     display: inline-block;
@@ -114,8 +122,10 @@ img{
     padding: 13px 28px;
     outline: none;
     border-radius: 7px;
-
+    
     margin-left: 6px;
+
+    box-shadow: 1.5px 3.4px 5px $navy-blue;
 }
 .btn:hover{
     cursor: pointer;
@@ -149,15 +159,15 @@ img{
 
     .main__header{
         color: #0d2636;
-        padding:35px 30px;
+        padding:5px 30px  35px 30px;
         margin-top: 15px;
         margin-bottom: 43px;
-        border-radius: 25px;
+        border-radius: 10px;
         background-color: $background;
     }
 
     .info-one{
-        border-radius: 25px;
+        border-radius: 10px;
         width: 33%;
         background-color: $background;
         color: $navy-blue;
@@ -173,8 +183,6 @@ img{
             font-weight: 400;
             line-height: 1;
             letter-spacing: 2.1px;
-    
-            
             
             transition: all .5s ease;
             color: #fff;
@@ -204,7 +212,62 @@ img{
         background-color: $background;
         color: $navy-blue;
         padding: 35px 30px;
-        border-radius: 25px;
-    }
+        border-radius: 10px;
 
+        .information-1{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+
+        }
+    }
+    .main__contents--repos{
+        padding:5px 30px  35px 30px;
+        margin-top: 15px;
+        margin-bottom: 43px;
+        border-radius: 10px;
+        background-color: $background;
+        color: $navy-blue;
+        .row3{
+            display: flex;
+            flex-direction: row;
+            justify-content:space-around;
+        }
+    }
+}
+.main__header, .info-one, .info-two{
+    box-shadow: 0.5px 0.5px 3px $light-orange;
+}
+
+/* 123213213213 */
+.header--title{
+    font-size: 30px;
+    text-shadow: 0px 0px 0.5px $navy-blue;
+    margin-bottom: 5.5px;
+    transition: transform 250ms;
+}
+.header--title:hover{
+    cursor: default;
+    transform: translateY(-5.49px);
+}
+.header--p{
+    text-shadow: 0px 0px 1px $light-orange;
+}
+.header--error{
+    color: red;
+    font-size: 14px;
+    margin: 0 0 2px 0;
+}
+.input-image{
+    border-radius: 10px;
+    box-shadow: 1.5px 3.4px 5px $navy-blue;
+}
+.view-profile{
+    box-shadow: 1.5px 3.4px 5px $navy-blue;
+}
+.hidden{
+    display: none;
+}
+.error{
+    border: 1.5px solid red;
 }
