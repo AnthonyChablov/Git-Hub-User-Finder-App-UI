@@ -15,6 +15,7 @@ let formFieldUI = document.querySelector('#form-submit');
 let heroHeader = document.querySelector('.hero__contents--header');
 let mainHeader = document.querySelector('.main__header');
 let mainContents = document.querySelector('.main__contents');
+let mainContentRepos = document.querySelector('.main__contents--repos');
 
 // selecting elements to input data into
 let inputImage = document.querySelector('.input-image');
@@ -97,19 +98,20 @@ mainHeader.addEventListener('submit',(e)=>{
         fetch(`https://api.github.com/users/${user.trim()}/repos?per_page=${github.repo_count}&sort=${github.repos_sort}&client_id=${github.client_id}&client_secret${github.client_secret}`,
         {method:'GET'})
             .then(elem=> elem.json())
-            .then(res => {
+            .then(res=> {
                 repos.innerHTML='';
-                res.forEach(elem1=> {
+                res.forEach(elem1 => {
                     console.log(elem1)
-                    let insertRepos =document.createElement('div')
+                    let insertRepos = document.createElement('div')
                     insertRepos.innerHTML=`
                     <div class="insert-repo__1 row3">
                         <p class="repo__1--p">Name:  ${elem1.name}
                         <p class="repo__1--stars">Stars: ${elem1.stargazers_count}</p>
-                        <p class="repo__1--watchers">${elem1.watchers}</p>
-                        <p class="repo__1--Forks">${elem1.forks}</p>
+                        <p class="repo__1--watchers">Watchers: ${elem1.watchers}</p>
+                        <p class="repo__1--Forks">Forks: ${elem1.forks}</p>
                     </div>`;
                     repos.appendChild(insertRepos);
+                    mainContentRepos.classList.remove('hidden')
                 });
             })
             .catch(err => console.error('An error has occured with repo request : ', err))

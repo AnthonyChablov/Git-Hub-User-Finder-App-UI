@@ -78,9 +78,15 @@ img{
        
 }
 
+input[type=submit]{
+    width: 100%;
+}
+
 .header__contents--form{
     display: inline-flex;
     
+    
+
     .form__field{    
         padding: 5.8px 10px 9px 10px; 
         line-height: 26px; 
@@ -160,8 +166,8 @@ img{
     .main__header{
         color: #0d2636;
         padding:5px 30px  35px 30px;
-        margin-top: 15px;
-        margin-bottom: 43px;
+        margin-top: 15x;
+        margin-bottom: 30px;
         border-radius: 10px;
         background-color: $background;
     }
@@ -173,6 +179,7 @@ img{
         color: $navy-blue;
         text-align: center;
         padding: 35px 30px;
+        
 
         .btn-2{
             display: inline-block;
@@ -223,7 +230,7 @@ img{
     }
     .main__contents--repos{
         padding:5px 30px  35px 30px;
-        margin-top: 15px;
+        margin-top: 30px;
         margin-bottom: 43px;
         border-radius: 10px;
         background-color: $background;
@@ -270,4 +277,97 @@ img{
 }
 .error{
     border: 1.5px solid red;
+}
+
+
+/* media queries  */
+@media (max-width:354px){
+    .row{
+        flex-direction: column-reverse;
+    }
+    .hero__contents{
+        width: 100%;
+        
+        .hero__contents--header{
+            font-size: 35px;
+            
+        }
+        .hero__contents--p{
+            font-size: 14px;
+            width: 80%;
+        }
+    }
+    .header__contents--form{
+        display: inline-flex;
+        
+        .form__field{ 
+            padding: 5.8px 10px 9px 10px;
+            width: 90%;
+        }
+    }
+    
+}
+@media (max-width:500px){
+    .hero__contents{
+        width: 100%;
+        
+        .hero__contents--header{
+            font-size: 45px;
+            
+        }
+        .hero__contents--p{
+            font-size: 14.5px;
+            width: 80%;
+        }
+    }
+    .repo__1--stars{
+        display: none;
+    }
+    .repo__1--watchers{
+        display:none;
+    }
+    .repo__1--Forks{
+        display: none;
+    }
+    .main{
+        .main__contents--repos{
+            .row3{
+                justify-content: left;
+            }
+        }
+    }
+    
+}
+@media(max-width:750px){
+    .repo__1--Forks{
+        display: none;
+    }
+}
+
+
+@media(max-width: 900px){
+    .repo__1--stars{
+        display: none;
+    }
+    .row-2{
+        flex-direction: column;
+    }
+    .main{
+        .info-one{
+            margin-top: 0px;
+            width: 100%;
+        }
+        .info-two{
+            margin-top: 20px;
+            width: 100%;
+            .information-1{
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+    
+            }
+        }
+    }
+    
+    
 }
